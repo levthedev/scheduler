@@ -85,13 +85,13 @@ class Schedule
   end
 
   def self.best
-    best = @@scores.max_by(3) do |week, score|
+    filtered_scores = @@scores
+
+    filtered_scores.max_by(3) do |week, score|
       score
-    end
-    best.each do |week|
+    end.each do |week|
       week.first.each { |pair| printf "#{pair[0].name}/#{pair[1].name}\n\n"}
     end
-    #best.first.first
   end
 end
 
